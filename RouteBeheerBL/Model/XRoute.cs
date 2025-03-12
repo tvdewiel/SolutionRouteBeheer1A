@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RouteBeheerDL.Model
+namespace RouteBeheerBL.Model
 {
     public class XRoute
     {

@@ -1,5 +1,6 @@
-﻿using RouteBeheerDL.Model;
-using RouteBeheerDL.Repos;
+﻿using RouteBeheerBL.Exceptions;
+using RouteBeheerBL.Interfaces;
+using RouteBeheerBL.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -7,13 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleAppRouteBeheer
+namespace RouteBeheerBL.Managers
 {
     public class NetworkManager
     {
-        private NetworkRepository repo;
+        private INetworkRepository repo;
 
-        public NetworkManager(NetworkRepository repo)
+        public NetworkManager(INetworkRepository repo)
         {
             this.repo = repo;
         }
@@ -43,6 +44,17 @@ namespace ConsoleAppRouteBeheer
             catch(Exception ex)
             {
                 throw new NetworkException("UpdateLocation", ex);
+            }
+        }
+        public List<Location> GetLocations()
+        {
+            try
+            {
+                return repo.GetLocations();
+            }
+            catch (Exception ex)
+            {
+                throw new NetworkException("GetLocations", ex);
             }
         }
     }
